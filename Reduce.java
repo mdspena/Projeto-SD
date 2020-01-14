@@ -6,7 +6,7 @@ import java.util.*;
 public class Reduce {
 
     public static void main(String[] args) throws Exception {
-        //InetAddress IPAddress = InetAddress.getByName("172.31.95.167");
+        //InetAddress IPAddress = InetAddress.getByName("42.42.42.42");
         DatagramSocket serverSocket = new DatagramSocket(9884);
         byte[] recBuf = new byte[1024];
         byte[] sendBuf = new byte[1024];
@@ -45,6 +45,7 @@ public class Reduce {
         
         System.out.println(references.size() + " referencias recebidas.");
         
+        // conta quantas vezes cada URL referenciada apareceu
         HashMap<String, Integer> indice = new HashMap<>();
         for (i = 0; i < references.size(); i++) {
             String item = references.get(i);
@@ -54,6 +55,7 @@ public class Reduce {
                 indice.put(item, 1);
         }
         
+        // mostra isso de um jeito bonitinho
         ArrayList<String> indiceInvertido = new ArrayList();
         for (Map.Entry <String, Integer> element: indice.entrySet()) {
             if(element.getValue()<10)
@@ -62,6 +64,7 @@ public class Reduce {
                 indiceInvertido.add(element.getValue() + " - " + element.getKey());
         }
 
+        // ordena do mais referenciado ao menos
         Collections.sort(indiceInvertido, Collections.reverseOrder());
 
         for(i=0; i<indiceInvertido.size();i++){
