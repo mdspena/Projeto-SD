@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Map1 {
 
     public static void main(String[] args) throws Exception {
-         //InetAddress IPAddress = InetAddress.getByName("172.31.95.167");
+         //InetAddress IPAddress = InetAddress.getByName("42.42.42.42");
         DatagramSocket serverSocket = new DatagramSocket(9880);
         byte[] recBuf = new byte[1024];
         byte[] sendBuf = new byte[1024];
