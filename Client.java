@@ -15,6 +15,8 @@ public class Client {
     public static void main(String[] args) throws Exception {
         int i;
         ArrayList<String> links = new ArrayList();
+        
+        // lista de URLs
         String arquivo = "links.txt";
      
         try {
@@ -23,6 +25,7 @@ public class Client {
      
           String linha = lerArq.readLine();
           
+          // cada URL é uma linha do ArrayList
           while (linha != null) {
             links.add(linha);
             linha = lerArq.readLine();
@@ -32,11 +35,12 @@ public class Client {
             System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
         }
         
-        InetAddress IPAddress = InetAddress.getByName("172.31.95.167");
+        InetAddress IPAddress = InetAddress.getByName("42.42.42.42");
         DatagramSocket clientSocket = new DatagramSocket(9874);
         
         byte[] sendData = new byte[1024];
         
+        // mandando as URLs para o coordenador
         System.out.println("Enviando lista L com " + links.size() + " URLs para o coordenador");
         for(i = 0; i < links.size(); i++){
         
@@ -67,6 +71,7 @@ public class Client {
         int exit = 0;
         ArrayList<String> indiceInvertido = new ArrayList();
         
+        // recebendo as informações do reduce
         while (exit==0) {
             DatagramPacket recPacket = new DatagramPacket(recBuf, recBuf.length);
             serverSocket.receive(recPacket);
@@ -95,6 +100,7 @@ public class Client {
         
         System.out.println("Indice invertido recebido, armazenando na pasta atual...");
         
+        // imprimindo o indice invertido em um txt
         File arq = new File("indiceInvertido.txt");
         FileWriter writer = new FileWriter(arq);
         for (i=0; i<indiceInvertido.size();i++) {
