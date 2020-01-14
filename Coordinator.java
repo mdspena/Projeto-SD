@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Coordinator {
 
     public static void main(String[] args) throws Exception {
-        //InetAddress IPAddress = InetAddress.getByName("172.31.95.167");
+        //InetAddress IPAddress = InetAddress.getByName("42.42.42.42");
         DatagramSocket serverSocket = new DatagramSocket(9876);
         byte[] recBuf = new byte[1024];
         byte[] sendBuf = new byte[1024];
@@ -16,6 +16,7 @@ public class Coordinator {
         int exit = 0;
         ArrayList<String> links = new ArrayList();
 
+        // recebendo a lista de URLs do cliente
         System.out.println("Recebendo lista L...");
         while (exit==0) {
             DatagramPacket recPacket = new DatagramPacket(recBuf, recBuf.length);
@@ -59,9 +60,9 @@ public class Coordinator {
         }
         
         // Cria outro socket pra mandar pros maps
-        InetAddress IPmap1 = InetAddress.getByName("172.31.95.167");
-        InetAddress IPmap2 = InetAddress.getByName("172.31.95.167");
-        InetAddress IPmap3 = InetAddress.getByName("172.31.95.167");
+        InetAddress IPmap1 = InetAddress.getByName("42.42.42.42");
+        InetAddress IPmap2 = InetAddress.getByName("42.42.42.42");
+        InetAddress IPmap3 = InetAddress.getByName("42.42.42.42");
         int portMap1 = 9880;
         int portMap2 = 9881;
         int portMap3 = 9882;
